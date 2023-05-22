@@ -4,13 +4,13 @@ import OrgAdd from "./OrgAdd";
 class ComMain extends React.Component{
    // _isMounted = false;
 
-    constructor(names,age,roll){
-        super();
+    constructor(props){
+        super(props);
 
         //Attrebutes Decalaration
-         this.name= names;
-         this.age=age;
-         this.roll=roll;
+        //  this.name= names;
+        //  this.age=age;
+        //  this.roll=roll;
         // this.phone=this.phone;
         // this.address=this.address;
 
@@ -21,19 +21,10 @@ class ComMain extends React.Component{
             phone:"",
             address:""
         };
-
-        //Methods Declaration
-       // this.addNameAgeRoll =this.addNameAgeRoll.bind(this);
-      //  this.getSetstate=this.getSetstate.bind(this);
+      this.addNameAgeRoll = this.addNameAgeRoll.bind(this);
+       
     }
 
-    
-
-    componentWillUnmount() {
-        alert("componentwill")
-        this.addNameAgeRoll = this.addNameAgeRoll.bind(this);
-   }
-  
 
      
     // this.setState((prev)=>{
@@ -56,9 +47,9 @@ class ComMain extends React.Component{
     // }
 
     addNameAgeRoll(){
-        // this.addNameAgeRoll = this.addNameAgeRoll.bind(this);
          alert("p");
-        //     this.setState({ myname: "ddd" });
+             this.setState({myname: "ddd" });
+             alert(this.state.myname+"--name")
     }
     
 

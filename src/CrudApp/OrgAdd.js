@@ -1,37 +1,18 @@
 import React from 'react';
 
-import OrgMain from './OrgMain';
 
 class AddMain extends React.Component{
-  
-    //orgMain=new OrgMain;
+   
     constructor(props){
         super(props);
-       // this.increment = this.increment.bind(this);
-        this.saveData= this.saveData.bind(this);
-        this.mynameMet=this.mynameMet.bind(this);
+     this.mynameMet = this.mynameMet.bind(this);
     }
 
-    saveData(e){
-        alert("hello");
-        // orgMain=new OrgMain;
-        // var s=orgMain.getSetstate();
-        // alert(JSON.stringify(s)+"--in")
-
-         //  var name= e.target.myName.value;
-          // alert(name);
-    }
-
-    mynameMet(e){
-        var name= e.target.value;
-        //var s=new OrgMain(name,"","");
-        this.props.as;
+    mynameMet(){
+        // var name= e.target.value;
+        this.props.as();
     }
     
-    // ageMet(){
-    //     var name= e.target.value;
-    //     alert(name);
-    // }
     render(){
         return(
             <div>
