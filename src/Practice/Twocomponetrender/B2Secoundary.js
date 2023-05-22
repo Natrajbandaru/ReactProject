@@ -1,6 +1,8 @@
 
 import React from "react";
 
+import B1Main from './B1MainComponent';
+
 // class Show extends React.Component{
 //     render(){
 //         return(
@@ -16,6 +18,7 @@ import React from "react";
 //     }
 // }
 var Show =(props)=>{
+
     return(
         <div>
                 <h1>Count Application:{props.head}</h1>
