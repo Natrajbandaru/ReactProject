@@ -16,14 +16,19 @@ class ComMain extends React.Component{
         // this.address=this.address;
 
         this.state={
-            data:{},
-            listitems: [],
+            // data:{},
+            names:'',
+            age:'',
+            roll:'',
+            phone:'',
+            address:'',
+            listitems: []
         };
         this.a={};
         
-      this.addNameAgeRoll = this.addNameAgeRoll.bind(this);
-      this.addValuesToList =this.addValuesToList.bind(this);
-
+        this.addNameAgeRoll = this.addNameAgeRoll.bind(this);
+        this.addValuesToList =this.addValuesToList.bind(this);
+        this.getListOfDataBasedOnName =this.getListOfDataBasedOnName.bind(this);
     }
 
 
@@ -47,28 +52,27 @@ class ComMain extends React.Component{
     //     });
     // }
     addNameAgeRoll(value,action){
-                
                 if(action==='name'){
                     this.a.name=value;
-                  //  this.setState(()=>{a});
+                    this.setState({names:value});
                 }
                 else if(action==='age'){
                     this.a.age=value;
-                  //  this.setState({age: value});
+                     this.setState({age: value});
                 }
                 else if(action==='roll'){
                     this.a.roll=value;
-                //    this.setState({rollNo: value});
+                    this.setState(()=>{return {roll:value}});
                 }
                 else if(action==='phone'){
                     this.a.phone=value;
-                 //   this.setState({phone: value});
+                    this.setState({phone: value});
                 }
                 else if(action==='address'){
                     this.a.address=value;
-                  //  this.setState({address: value});
+                    this.setState({address: value});
                 }   
-                this.setState({data: this.a});
+              //  this.setState({data: this.a});
            //  alert(JSON.stringify(this.state.data)+"--name")
     }
 
@@ -76,22 +80,30 @@ class ComMain extends React.Component{
         alert(JSON.stringify(this.state)+"--name");
        // this.setState(()=> {listitems:[...this.state.listitems],this.state.data})
       // this.setState((prev)=> ({listitems:[...this.state.listitems,,this.state.data]}))
-
-      this.setState((prev)=> {
-        return{
-            listitems:[...this.state.listitems,this.state.data],
-            data: '',
-        }
-     })
-
-
+      var [names,age,roll,phone,address]=[this.state.names,this.state.age,this.state.roll,this.state.phone,this.state.address];
+      var obj={names,age,roll,phone,address}
+        this.setState((prev)=> {
+            return{
+                listitems:[...this.state.listitems,obj],
+                data: '',
+            }
+        })
     }
+
+    getListOfDataBasedOnName(namea){
+       var sd= this.state.listitems.filter((s)=>{
+            return namea === s;
+        }); 
+
+        this.setState(()=>{})
+      
+    };
     
     render(){
         return(
             <div>
                 <OrgAdd as={this.addNameAgeRoll} listSaveDta={this.addValuesToList}/>
-                <ListData listData={this.state.listitems}/>
+                <ListData listData={this.state.listitems}  getListOfDataBasedOnName = {this.getListOfDataBasedOnName}/>
             </div>
         )
     }
