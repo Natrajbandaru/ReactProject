@@ -1,7 +1,9 @@
 import React from "react";
 
 import OrgAdd from "./OrgAdd";
-import ListData  from './OrgList'
+import ListData  from './OrgList';
+import OrgEdit from './OrgEdit';
+
 class ComMain extends React.Component{
    // _isMounted = false;
 
@@ -22,7 +24,8 @@ class ComMain extends React.Component{
             roll:'',
             phone:'',
             address:'',
-            listitems: []
+            listitems: [],
+            editData:{}
         };
         this.a={};
         
@@ -77,7 +80,7 @@ class ComMain extends React.Component{
     }
 
     addValuesToList(){
-        alert(JSON.stringify(this.state)+"--name");
+       
        // this.setState(()=> {listitems:[...this.state.listitems],this.state.data})
       // this.setState((prev)=> ({listitems:[...this.state.listitems,,this.state.data]}))
       var [names,age,roll,phone,address]=[this.state.names,this.state.age,this.state.roll,this.state.phone,this.state.address];
@@ -92,22 +95,29 @@ class ComMain extends React.Component{
 
     getListOfDataBasedOnName(namea){
        var sd= this.state.listitems.filter((s)=>{
-            return namea === s;
+            return namea !== s.names;
         }); 
+      alert(JSON.stringify(sd)+"--dd")
+        this.setState({names:sd.name})
+        this.setState({age:sd.age})
+        this.setState({roll:sd.roll})
+        this.setState({phone:sd.phone})
+        this.setState({address:sd.address})
 
-        this.setState(()=>{})
-      
+        this.setState({listitems:sd})
+        
+             
     };
-    
     render(){
+      
         return(
             <div>
-                <OrgAdd as={this.addNameAgeRoll} listSaveDta={this.addValuesToList}/>
+                <OrgAdd as={this.addNameAgeRoll} listSaveDta={this.addValuesToList} />
                 <ListData listData={this.state.listitems}  getListOfDataBasedOnName = {this.getListOfDataBasedOnName}/>
+                <OrgEdit OrgEdit={this.state.listitems}  />
             </div>
         )
     }
-    
 }
 
 export default ComMain;

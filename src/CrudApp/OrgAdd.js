@@ -65,6 +65,7 @@ class AddMain extends React.Component{
       
     }
     
+    
     render(){
         return(
             <div>
